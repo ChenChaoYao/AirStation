@@ -11,26 +11,32 @@ void ui_Screen2_screen_init(void)
     lv_obj_clear_flag(ui_Screen2, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_style_bg_img_src(ui_Screen2, &ui_img_water_png, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_Banner = lv_label_create(ui_Screen2);
+    // 頂部居中標題與版本容器 (車內空氣狀態監督站 v1.4.2)
+    lv_obj_t * ui_Header2 = lv_obj_create(ui_Screen2);
+    lv_obj_set_size(ui_Header2, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+    lv_obj_set_flex_flow(ui_Header2, LV_FLEX_FLOW_ROW);
+    lv_obj_set_flex_align(ui_Header2, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER);
+    lv_obj_clear_flag(ui_Header2, LV_OBJ_FLAG_SCROLLABLE | LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_set_style_bg_opa(ui_Header2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_opa(ui_Header2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_all(ui_Header2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_column(ui_Header2, 6, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_align(ui_Header2, LV_ALIGN_TOP_MID, 0, 2);
+
+    ui_Banner = lv_label_create(ui_Header2);
     lv_obj_set_width(ui_Banner, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Banner, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_Banner, 0);
-    lv_obj_set_y(ui_Banner, 1);
-    lv_obj_set_align(ui_Banner, LV_ALIGN_TOP_MID);
     lv_label_set_text(ui_Banner, "車內空氣狀態監督站");
     lv_obj_set_style_text_color(ui_Banner, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_Banner, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui_Banner, &ui_font_chinese_20, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_Banner, &ui_font_chinese_16, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_Version2 = lv_label_create(ui_Screen2);
+    ui_Version2 = lv_label_create(ui_Header2);
     lv_obj_set_width(ui_Version2, LV_SIZE_CONTENT);
     lv_obj_set_height(ui_Version2, LV_SIZE_CONTENT);
-    lv_obj_set_x(ui_Version2, -4);
-    lv_obj_set_y(ui_Version2, 4);
-    lv_obj_set_align(ui_Version2, LV_ALIGN_TOP_RIGHT);
     lv_label_set_text(ui_Version2, "v1.4.2");
     lv_obj_set_style_text_color(ui_Version2, lv_color_hex(0x64DDF9), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_opa(ui_Version2, 200, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui_Version2, 220, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_Version2, &lv_font_montserrat_12, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_Label12 = lv_label_create(ui_Screen2);
@@ -176,6 +182,25 @@ void ui_Screen2_screen_init(void)
     lv_obj_set_style_border_opa(ui_CH20Bar, 255, LV_PART_INDICATOR | LV_STATE_DEFAULT);
     lv_obj_set_style_border_width(ui_CH20Bar, 2, LV_PART_INDICATOR | LV_STATE_DEFAULT);
     lv_obj_set_style_border_side(ui_CH20Bar, LV_BORDER_SIDE_FULL, LV_PART_INDICATOR | LV_STATE_DEFAULT);
+
+    // 頁面指示圓點 (○ ●)
+    lv_obj_t * ui_Dot2_1 = lv_obj_create(ui_Screen2);
+    lv_obj_set_size(ui_Dot2_1, 6, 6);
+    lv_obj_set_style_radius(ui_Dot2_1, LV_RADIUS_CIRCLE, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_color(ui_Dot2_1, lv_color_hex(0x888888), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_Dot2_1, 100, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_width(ui_Dot2_1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_clear_flag(ui_Dot2_1, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_align(ui_Dot2_1, LV_ALIGN_BOTTOM_MID, -8, -5);
+
+    lv_obj_t * ui_Dot2_2 = lv_obj_create(ui_Screen2);
+    lv_obj_set_size(ui_Dot2_2, 6, 6);
+    lv_obj_set_style_radius(ui_Dot2_2, LV_RADIUS_CIRCLE, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_color(ui_Dot2_2, lv_color_hex(0x00FF80), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_Dot2_2, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_width(ui_Dot2_2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_clear_flag(ui_Dot2_2, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_align(ui_Dot2_2, LV_ALIGN_BOTTOM_MID, 8, -5);
 
     // 全螢幕透明觸控覆蓋層：保證觸碰螢幕任何點（不論點在字體、數值、條狀圖或背景）都能切換畫面
     lv_obj_t * ui_TouchLayer2 = lv_obj_create(ui_Screen2);

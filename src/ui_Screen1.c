@@ -277,27 +277,52 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_style_text_color(ui_CQTY, lv_color_hex(0x64DDF9), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_CQTY, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_Label10 = lv_label_create(ui_Screen1);
+    // 頂部居中標題與版本容器 (車內空氣狀態監督站 v1.4.2)
+    lv_obj_t * ui_Header1 = lv_obj_create(ui_Screen1);
+    lv_obj_set_size(ui_Header1, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+    lv_obj_set_flex_flow(ui_Header1, LV_FLEX_FLOW_ROW);
+    lv_obj_set_flex_align(ui_Header1, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER);
+    lv_obj_clear_flag(ui_Header1, LV_OBJ_FLAG_SCROLLABLE | LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_set_style_bg_opa(ui_Header1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_opa(ui_Header1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_all(ui_Header1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_column(ui_Header1, 6, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_align(ui_Header1, LV_ALIGN_TOP_MID, 0, 2);
+
+    ui_Label10 = lv_label_create(ui_Header1);
     lv_obj_set_width(ui_Label10, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label10, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_Label10, 0);
-    lv_obj_set_y(ui_Label10, 3);
-    lv_obj_set_align(ui_Label10, LV_ALIGN_TOP_MID);
-    lv_label_set_text(ui_Label10, "電壓及車內空氣狀態監督站");
+    lv_label_set_text(ui_Label10, "車內空氣狀態監督站");
     lv_obj_set_style_text_color(ui_Label10, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_Label10, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_Label10, &ui_font_chinese_16, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_Version1 = lv_label_create(ui_Screen1);
+    ui_Version1 = lv_label_create(ui_Header1);
     lv_obj_set_width(ui_Version1, LV_SIZE_CONTENT);
     lv_obj_set_height(ui_Version1, LV_SIZE_CONTENT);
-    lv_obj_set_x(ui_Version1, -4);
-    lv_obj_set_y(ui_Version1, 4);
-    lv_obj_set_align(ui_Version1, LV_ALIGN_TOP_RIGHT);
     lv_label_set_text(ui_Version1, "v1.4.2");
     lv_obj_set_style_text_color(ui_Version1, lv_color_hex(0x64DDF9), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_opa(ui_Version1, 200, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui_Version1, 220, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_Version1, &lv_font_montserrat_12, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    // 頁面指示圓點 (● ○)
+    lv_obj_t * ui_Dot1_1 = lv_obj_create(ui_Screen1);
+    lv_obj_set_size(ui_Dot1_1, 6, 6);
+    lv_obj_set_style_radius(ui_Dot1_1, LV_RADIUS_CIRCLE, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_color(ui_Dot1_1, lv_color_hex(0x00FF80), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_Dot1_1, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_width(ui_Dot1_1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_clear_flag(ui_Dot1_1, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_align(ui_Dot1_1, LV_ALIGN_BOTTOM_MID, -8, -5);
+
+    lv_obj_t * ui_Dot1_2 = lv_obj_create(ui_Screen1);
+    lv_obj_set_size(ui_Dot1_2, 6, 6);
+    lv_obj_set_style_radius(ui_Dot1_2, LV_RADIUS_CIRCLE, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_color(ui_Dot1_2, lv_color_hex(0x888888), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_Dot1_2, 100, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_width(ui_Dot1_2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_clear_flag(ui_Dot1_2, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_align(ui_Dot1_2, LV_ALIGN_BOTTOM_MID, 8, -5);
 
     // 全螢幕透明觸控覆蓋層：保證觸碰螢幕任何點（不論點在字體、數值、條狀圖或背景）都能切換畫面
     lv_obj_t * ui_TouchLayer1 = lv_obj_create(ui_Screen1);

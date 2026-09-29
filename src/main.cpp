@@ -493,44 +493,52 @@ void loop() {
             int CO2 = packet[6] * 256 + packet[7];
             sprintf(TS, "%d ppm", CO2);
             if (CO2 < 32767) {
-                if (CO2 > 3500) {
-                    lv_obj_set_style_bg_color(ui_CO2Bar, lv_color_hex(0xFF0000),
-                        LV_PART_INDICATOR | LV_STATE_DEFAULT);
+                lv_color_t co2Color;
+                if (CO2 > 1500) {
+                    co2Color = lv_color_hex(0xFF0000); // 超標紅
+                } else if (CO2 >= 800) {
+                    co2Color = lv_color_hex(0xFFFF00); // 警戒黃
                 } else {
-                    lv_obj_set_style_bg_color(ui_CO2Bar, lv_color_hex(0x00FF00),
-                        LV_PART_INDICATOR | LV_STATE_DEFAULT);
+                    co2Color = lv_color_hex(0x00FF00); // 優良綠
                 }
+                lv_obj_set_style_bg_color(ui_CO2Bar, co2Color, LV_PART_INDICATOR | LV_STATE_DEFAULT);
+                lv_obj_set_style_border_color(ui_CO2Bar, co2Color, LV_PART_INDICATOR | LV_STATE_DEFAULT);
+                lv_obj_set_style_text_color(ui_CO2Val, co2Color, LV_PART_MAIN | LV_STATE_DEFAULT);
                 lv_label_set_text(ui_CO2Val, TS);
             }
 
             float TVOC = packet[2] * 256 + packet[3] * 0.001;
             sprintf(TS, "%0.4g mg/m3", TVOC);
             if (TVOC < 10) {
-                lv_label_set_text(ui_TVOCVal, TS);
-                if (TVOC > 0.6) {
-                    lv_obj_set_style_bg_color(ui_TVOCBar,
-                        lv_color_hex(0xFF0000),
-                        LV_PART_INDICATOR | LV_STATE_DEFAULT);
+                lv_color_t tvocColor;
+                if (TVOC > 0.6f) {
+                    tvocColor = lv_color_hex(0xFF0000); // 超標紅
+                } else if (TVOC >= 0.2f) {
+                    tvocColor = lv_color_hex(0xFFFF00); // 警戒黃
                 } else {
-                    lv_obj_set_style_bg_color(ui_TVOCBar,
-                        lv_color_hex(0x00FF00),
-                        LV_PART_INDICATOR | LV_STATE_DEFAULT);
+                    tvocColor = lv_color_hex(0x00FF00); // 優良綠
                 }
+                lv_obj_set_style_bg_color(ui_TVOCBar, tvocColor, LV_PART_INDICATOR | LV_STATE_DEFAULT);
+                lv_obj_set_style_border_color(ui_TVOCBar, tvocColor, LV_PART_INDICATOR | LV_STATE_DEFAULT);
+                lv_obj_set_style_text_color(ui_TVOCVal, tvocColor, LV_PART_MAIN | LV_STATE_DEFAULT);
+                lv_label_set_text(ui_TVOCVal, TS);
             }
 
             float CH20 = packet[4] * 256 + packet[5] * 0.001;
             sprintf(TS, "%0.4g mg/m3", CH20);
             if (CH20 < 10) {
-                lv_label_set_text(ui_CH20Val, TS);
-                if (CH20 > 0.15) {
-                    lv_obj_set_style_bg_color(ui_CH20Bar,
-                        lv_color_hex(0xFF0000),
-                        LV_PART_INDICATOR | LV_STATE_DEFAULT);
+                lv_color_t ch20Color;
+                if (CH20 > 0.15f) {
+                    ch20Color = lv_color_hex(0xFF0000); // 超標紅
+                } else if (CH20 >= 0.05f) {
+                    ch20Color = lv_color_hex(0xFFFF00); // 警戒黃
                 } else {
-                    lv_obj_set_style_bg_color(ui_CH20Bar,
-                        lv_color_hex(0x00FF00),
-                        LV_PART_INDICATOR | LV_STATE_DEFAULT);
+                    ch20Color = lv_color_hex(0x00FF00); // 優良綠
                 }
+                lv_obj_set_style_bg_color(ui_CH20Bar, ch20Color, LV_PART_INDICATOR | LV_STATE_DEFAULT);
+                lv_obj_set_style_border_color(ui_CH20Bar, ch20Color, LV_PART_INDICATOR | LV_STATE_DEFAULT);
+                lv_obj_set_style_text_color(ui_CH20Val, ch20Color, LV_PART_MAIN | LV_STATE_DEFAULT);
+                lv_label_set_text(ui_CH20Val, TS);
             }
         }
     }
@@ -549,6 +557,18 @@ void loop() {
                 sprintf(s, "%.1f V", myData.nVoltage);
                 lastVoltage = myData.nVoltage;
                 lv_label_set_text(ui_Label1, s);
+
+                // 電壓三段智慧變色：<11.8V危險紅, 11.8~12.2V警戒黃, >=12.2V正常青綠
+                lv_color_t vColor;
+                if (lastVoltage < 11.8f || lastVoltage > 15.0f) {
+                    vColor = lv_color_hex(0xFF0000);
+                } else if (lastVoltage < 12.2f) {
+                    vColor = lv_color_hex(0xFFFF00);
+                } else {
+                    vColor = lv_color_hex(0x00FF80);
+                }
+                lv_obj_set_style_text_color(ui_Label1, vColor, LV_PART_MAIN | LV_STATE_DEFAULT);
+
                 if (lastVoltage > highV) {
                     highV = lastVoltage;
                     sprintf(s, "%.1f V", highV);
@@ -565,6 +585,18 @@ void loop() {
                 sprintf(s, "%.1f °C", myData.nTemperature);
                 lastTemperature = myData.nTemperature;
                 lv_label_set_text(ui_Label3, s);
+
+                // 溫度三段智慧變色：>55°C過熱紅, 45~55°C警戒黃, <45°C正常青綠
+                lv_color_t tColor;
+                if (lastTemperature > 55.0f) {
+                    tColor = lv_color_hex(0xFF0000);
+                } else if (lastTemperature >= 45.0f) {
+                    tColor = lv_color_hex(0xFFFF00);
+                } else {
+                    tColor = lv_color_hex(0x00FF80);
+                }
+                lv_obj_set_style_text_color(ui_Label3, tColor, LV_PART_MAIN | LV_STATE_DEFAULT);
+
                 if (lastTemperature > highT) {
                     highT = lastTemperature;
                     sprintf(s, "%.1f °C", highT);
