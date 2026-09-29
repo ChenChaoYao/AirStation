@@ -45,7 +45,7 @@ void ui_Screen2_screen_init(void)
     ui_Label14 = lv_label_create(ui_Screen2);
     lv_obj_set_width(ui_Label14, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label14, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_Label14, 4);
+    lv_obj_set_x(ui_Label14, 3);
     lv_obj_set_y(ui_Label14, 205);
     lv_label_set_text(ui_Label14, "甲醛濃度 (CH2O)");
     lv_obj_set_style_text_color(ui_Label14, lv_color_hex(0x02FF6C), LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -88,9 +88,9 @@ void ui_Screen2_screen_init(void)
     ui_Label15 = lv_label_create(ui_Screen2);
     lv_obj_set_width(ui_Label15, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label15, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_Label15, 30);
-    lv_obj_set_y(ui_Label15, -96);
-    lv_obj_set_align(ui_Label15, LV_ALIGN_CENTER);
+    lv_obj_set_x(ui_Label15, -4);
+    lv_obj_set_y(ui_Label15, 60);
+    lv_obj_set_align(ui_Label15, LV_ALIGN_TOP_RIGHT);
     lv_label_set_text(ui_Label15, "上限: 15,000ppm");
     lv_obj_set_style_text_color(ui_Label15, lv_color_hex(0xFF0000), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_Label15, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
