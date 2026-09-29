@@ -81,7 +81,7 @@ void ui_Screen1_screen_init(void)
     ui_Pressure = lv_label_create(ui_Voltage);
     lv_obj_set_width(ui_Pressure, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Pressure, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_y(ui_Pressure, 2);
+    lv_obj_set_y(ui_Pressure, 8);
     lv_obj_set_x(ui_Pressure, lv_pct(-28));
     lv_obj_set_align(ui_Pressure, LV_ALIGN_BOTTOM_MID);
     lv_label_set_text(ui_Pressure, "大氣壓力:");
@@ -92,8 +92,8 @@ void ui_Screen1_screen_init(void)
     ui_Pvalue = lv_label_create(ui_Voltage);
     lv_obj_set_width(ui_Pvalue, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Pvalue, LV_SIZE_CONTENT);    /// 3
-    lv_obj_set_x(ui_Pvalue, 15);
-    lv_obj_set_y(ui_Pvalue, 3);
+    lv_obj_set_x(ui_Pvalue, 28);
+    lv_obj_set_y(ui_Pvalue, 8);
     lv_obj_set_align(ui_Pvalue, LV_ALIGN_BOTTOM_MID);
     lv_label_set_text(ui_Pvalue, "1004.94 hPa");
     lv_obj_set_style_text_color(ui_Pvalue, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -157,7 +157,7 @@ void ui_Screen1_screen_init(void)
     ui_Altitude = lv_label_create(ui_Temperature);
     lv_obj_set_width(ui_Altitude, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Altitude, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_y(ui_Altitude, 6);
+    lv_obj_set_y(ui_Altitude, 8);
     lv_obj_set_x(ui_Altitude, lv_pct(-28));
     lv_obj_set_align(ui_Altitude, LV_ALIGN_BOTTOM_MID);
     lv_label_set_text(ui_Altitude, "海拔高度:");
@@ -168,8 +168,8 @@ void ui_Screen1_screen_init(void)
     ui_Avalue = lv_label_create(ui_Temperature);
     lv_obj_set_width(ui_Avalue, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Avalue, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_Avalue, -7);
-    lv_obj_set_y(ui_Avalue, 7);
+    lv_obj_set_x(ui_Avalue, 28);
+    lv_obj_set_y(ui_Avalue, 8);
     lv_obj_set_align(ui_Avalue, LV_ALIGN_BOTTOM_MID);
     lv_label_set_text(ui_Avalue, "68.91 m");
     lv_obj_set_style_text_color(ui_Avalue, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -179,9 +179,9 @@ void ui_Screen1_screen_init(void)
 
     ui_Other = lv_obj_create(ui_Screen1);
     lv_obj_set_width(ui_Other, lv_pct(100));
-    lv_obj_set_height(ui_Other, lv_pct(30));
+    lv_obj_set_height(ui_Other, 92);
     lv_obj_set_x(ui_Other, 0);
-    lv_obj_set_y(ui_Other, 225);
+    lv_obj_set_y(ui_Other, 218);
     lv_obj_set_align(ui_Other, LV_ALIGN_TOP_MID);
     lv_obj_clear_flag(ui_Other, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_style_radius(ui_Other, 20, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -239,31 +239,11 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_style_text_color(ui_Label9, lv_color_hex(0x64DDF9), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_Label9, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_Label11 = lv_label_create(ui_Other);
-    lv_obj_set_width(ui_Label11, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_Label11, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_Label11, lv_pct(58));
-    lv_obj_set_y(ui_Label11, lv_pct(72));
-    lv_label_set_text(ui_Label11, "連線數:");
-    lv_obj_set_style_text_color(ui_Label11, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_opa(ui_Label11, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui_Label11, &ui_font_chinese_16, LV_PART_MAIN | LV_STATE_DEFAULT);
-
-    ui_CQTY = lv_label_create(ui_Other);
-    lv_obj_set_width(ui_CQTY, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_CQTY, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_y(ui_CQTY, 47);
-    lv_obj_set_x(ui_CQTY, lv_pct(95));
-    lv_label_set_text(ui_CQTY, "0");
-    lv_obj_set_style_text_color(ui_CQTY, lv_color_hex(0x64DDF9), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_opa(ui_CQTY, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-
     ui_Label18 = lv_label_create(ui_Other);
     lv_obj_set_width(ui_Label18, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label18, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_Label18, -104);
-    lv_obj_set_y(ui_Label18, 22);
-    lv_obj_set_align(ui_Label18, LV_ALIGN_CENTER);
+    lv_obj_set_x(ui_Label18, lv_pct(-5));
+    lv_obj_set_y(ui_Label18, lv_pct(70));
     lv_label_set_text(ui_Label18, "封包:");
     lv_obj_set_style_text_color(ui_Label18, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_Label18, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -272,12 +252,30 @@ void ui_Screen1_screen_init(void)
     ui_RecordCount = lv_label_create(ui_Other);
     lv_obj_set_width(ui_RecordCount, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_RecordCount, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_RecordCount, -68);
-    lv_obj_set_y(ui_RecordCount, 23);
-    lv_obj_set_align(ui_RecordCount, LV_ALIGN_CENTER);
+    lv_obj_set_x(ui_RecordCount, lv_pct(16));
+    lv_obj_set_y(ui_RecordCount, lv_pct(70));
     lv_label_set_text(ui_RecordCount, "0");
     lv_obj_set_style_text_color(ui_RecordCount, lv_color_hex(0x64DDF9), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_RecordCount, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    ui_Label11 = lv_label_create(ui_Other);
+    lv_obj_set_width(ui_Label11, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_Label11, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_x(ui_Label11, lv_pct(46));
+    lv_obj_set_y(ui_Label11, lv_pct(70));
+    lv_label_set_text(ui_Label11, "連線數:");
+    lv_obj_set_style_text_color(ui_Label11, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui_Label11, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_Label11, &ui_font_chinese_16, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    ui_CQTY = lv_label_create(ui_Other);
+    lv_obj_set_width(ui_CQTY, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_CQTY, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_x(ui_CQTY, lv_pct(76));
+    lv_obj_set_y(ui_CQTY, lv_pct(70));
+    lv_label_set_text(ui_CQTY, "0");
+    lv_obj_set_style_text_color(ui_CQTY, lv_color_hex(0x64DDF9), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui_CQTY, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_Label10 = lv_label_create(ui_Screen1);
     lv_obj_set_width(ui_Label10, LV_SIZE_CONTENT);   /// 1
@@ -289,6 +287,16 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_style_text_color(ui_Label10, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_Label10, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_Label10, &ui_font_chinese_16, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    // 全螢幕透明觸控覆蓋層：保證觸碰螢幕任何點（不論點在字體、數值、條狀圖或背景）都能切換畫面
+    lv_obj_t * ui_TouchLayer1 = lv_obj_create(ui_Screen1);
+    lv_obj_set_size(ui_TouchLayer1, lv_pct(100), lv_pct(100));
+    lv_obj_set_align(ui_TouchLayer1, LV_ALIGN_CENTER);
+    lv_obj_clear_flag(ui_TouchLayer1, LV_OBJ_FLAG_SCROLLABLE);
+    lv_obj_add_flag(ui_TouchLayer1, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_set_style_bg_opa(ui_TouchLayer1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_opa(ui_TouchLayer1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_add_event_cb(ui_TouchLayer1, ui_event_Screen1, LV_EVENT_ALL, NULL);
 
     lv_obj_add_event_cb(ui_Voltage, ui_event_Voltage, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_Temperature, ui_event_Temperature, LV_EVENT_ALL, NULL);

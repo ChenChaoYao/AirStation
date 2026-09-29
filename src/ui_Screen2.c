@@ -36,7 +36,7 @@ void ui_Screen2_screen_init(void)
     lv_obj_set_width(ui_Label13, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label13, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_Label13, 2);
-    lv_obj_set_y(ui_Label13, 125);
+    lv_obj_set_y(ui_Label13, 110);
     lv_label_set_text(ui_Label13, "揮發有機物 (TVOC)");
     lv_obj_set_style_text_color(ui_Label13, lv_color_hex(0x02FF6C), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_Label13, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -56,7 +56,7 @@ void ui_Screen2_screen_init(void)
     lv_obj_set_width(ui_CO2Val, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_CO2Val, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_CO2Val, 0);
-    lv_obj_set_y(ui_CO2Val, 80);
+    lv_obj_set_y(ui_CO2Val, 65);
     lv_obj_set_align(ui_CO2Val, LV_ALIGN_TOP_MID);
     lv_label_set_text(ui_CO2Val, "386 ppm");
     lv_obj_set_style_text_color(ui_CO2Val, lv_color_hex(0xFAFA68), LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -67,7 +67,7 @@ void ui_Screen2_screen_init(void)
     lv_obj_set_width(ui_TVOCVal, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_TVOCVal, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_TVOCVal, 0);
-    lv_obj_set_y(ui_TVOCVal, 20);
+    lv_obj_set_y(ui_TVOCVal, 5);
     lv_obj_set_align(ui_TVOCVal, LV_ALIGN_CENTER);
     lv_label_set_text(ui_TVOCVal, "0.001 mg/m3");
     lv_obj_set_style_text_color(ui_TVOCVal, lv_color_hex(0xFAFA68), LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -100,7 +100,7 @@ void ui_Screen2_screen_init(void)
     lv_obj_set_width(ui_Label16, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label16, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_Label16, -4);
-    lv_obj_set_y(ui_Label16, 150);
+    lv_obj_set_y(ui_Label16, 135);
     lv_obj_set_align(ui_Label16, LV_ALIGN_TOP_RIGHT);
     lv_label_set_text(ui_Label16, "上限: 0.60mg/m3");
     lv_obj_set_style_text_color(ui_Label16, lv_color_hex(0xFF0000), LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -165,6 +165,16 @@ void ui_Screen2_screen_init(void)
     lv_obj_set_style_border_opa(ui_CH20Bar, 255, LV_PART_INDICATOR | LV_STATE_DEFAULT);
     lv_obj_set_style_border_width(ui_CH20Bar, 2, LV_PART_INDICATOR | LV_STATE_DEFAULT);
     lv_obj_set_style_border_side(ui_CH20Bar, LV_BORDER_SIDE_FULL, LV_PART_INDICATOR | LV_STATE_DEFAULT);
+
+    // 全螢幕透明觸控覆蓋層：保證觸碰螢幕任何點（不論點在字體、數值、條狀圖或背景）都能切換畫面
+    lv_obj_t * ui_TouchLayer2 = lv_obj_create(ui_Screen2);
+    lv_obj_set_size(ui_TouchLayer2, lv_pct(100), lv_pct(100));
+    lv_obj_set_align(ui_TouchLayer2, LV_ALIGN_CENTER);
+    lv_obj_clear_flag(ui_TouchLayer2, LV_OBJ_FLAG_SCROLLABLE);
+    lv_obj_add_flag(ui_TouchLayer2, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_set_style_bg_opa(ui_TouchLayer2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_opa(ui_TouchLayer2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_add_event_cb(ui_TouchLayer2, ui_event_Screen2, LV_EVENT_ALL, NULL);
 
     lv_obj_add_event_cb(ui_Screen2, ui_event_Screen2, LV_EVENT_ALL, NULL);
 
