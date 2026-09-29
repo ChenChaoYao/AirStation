@@ -30,7 +30,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_width(ui_Label1, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label1, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_Label1, -20);
-    lv_obj_set_y(ui_Label1, lv_pct(-8));
+    lv_obj_set_y(ui_Label1, lv_pct(-4));
     lv_obj_set_align(ui_Label1, LV_ALIGN_CENTER);
     lv_label_set_text(ui_Label1, "00.0V");
     lv_obj_set_style_text_color(ui_Label1, lv_color_hex(0x02FF6C), LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -242,7 +242,7 @@ void ui_Screen1_screen_init(void)
     ui_Label18 = lv_label_create(ui_Other);
     lv_obj_set_width(ui_Label18, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label18, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_Label18, lv_pct(-5));
+    lv_obj_set_x(ui_Label18, -11);
     lv_obj_set_y(ui_Label18, lv_pct(70));
     lv_label_set_text(ui_Label18, "封包:");
     lv_obj_set_style_text_color(ui_Label18, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -252,7 +252,7 @@ void ui_Screen1_screen_init(void)
     ui_RecordCount = lv_label_create(ui_Other);
     lv_obj_set_width(ui_RecordCount, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_RecordCount, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_RecordCount, lv_pct(16));
+    lv_obj_set_x(ui_RecordCount, 39);
     lv_obj_set_y(ui_RecordCount, lv_pct(70));
     lv_label_set_text(ui_RecordCount, "0");
     lv_obj_set_style_text_color(ui_RecordCount, lv_color_hex(0x64DDF9), LV_PART_MAIN | LV_STATE_DEFAULT);

@@ -45,7 +45,7 @@ void ui_Screen2_screen_init(void)
     ui_Label14 = lv_label_create(ui_Screen2);
     lv_obj_set_width(ui_Label14, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label14, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_Label14, 3);
+    lv_obj_set_x(ui_Label14, 2);
     lv_obj_set_y(ui_Label14, 205);
     lv_label_set_text(ui_Label14, "甲醛濃度 (CH2O)");
     lv_obj_set_style_text_color(ui_Label14, lv_color_hex(0x02FF6C), LV_PART_MAIN | LV_STATE_DEFAULT);
