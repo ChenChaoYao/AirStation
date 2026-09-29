@@ -40,9 +40,8 @@
 #define SDA 22
 #define SCL 27
 
-// 設定校正高度（單位：米）
-// #define SEALEVELPRESSURE_HPA (1013.25) // 系統內定
-#define SEALEVELPRESSURE_HPA (1008.0) // 氣象網站回覆（高雄市）
+// 國際標準海平面氣壓 (ISA 標準：1013.25 hPa)
+#define SEALEVELPRESSURE_HPA (1013.25)
 #endif
 
 #ifdef JW01
@@ -590,11 +589,24 @@ void loop() {
         bmp.getEvent(&event);
 
         if (event.pressure) {
-            float pressure = event.pressure;
-            float altitude = bmp.pressureToAltitude(SEALEVELPRESSURE_HPA, pressure);
+            float rawPressure = event.pressure;
+            static float smoothPressure = 0.0f;
+            if (smoothPressure <= 0.0f) {
+                smoothPressure = rawPressure;
+            } else {
+                smoothPressure = smoothPressure * 0.7f + rawPressure * 0.3f;
+            }
+
+            // 讀取 BMP180 現場環境溫度以進行高精度氣壓高度熱力學補償
+            float tempC = 25.0f;
+            bmp.getTemperature(&tempC);
+
+            // 國際標準大氣(ISA)結合現場真實溫度之氣壓測高公式：
+            // h = ((P0 / P)^(1/5.255) - 1.0) * (T_celsius + 273.15) / 0.0065
+            float altitude = ((powf(SEALEVELPRESSURE_HPA / smoothPressure, 0.1902949f) - 1.0f) * (tempC + 273.15f)) / 0.0065f;
 
             char TS[32];
-            sprintf(TS, "%04.2f hPa", pressure);
+            sprintf(TS, "%04.2f hPa", smoothPressure);
             lv_label_set_text(ui_Pvalue, TS);
             sprintf(TS, "%04.2f m", altitude);
             lv_label_set_text(ui_Avalue, TS);
