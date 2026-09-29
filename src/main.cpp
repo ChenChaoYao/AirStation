@@ -30,10 +30,10 @@
 
 #include <TFT_Touch.h>
 
-#define GY_86 true
+#define USE_BMP180 true
 #define JW01 true
 
-#ifdef GY_86
+#ifdef USE_BMP180
 #include <Adafruit_BMP085_U.h>
 #include <Adafruit_Sensor.h>
 #include <Wire.h>
@@ -301,7 +301,7 @@ void checkConnections() {
     //  Serial.println(connectedDevices);
 }
 
-#ifdef GY_86
+#ifdef USE_BMP180
 Adafruit_BMP085_Unified bmp = Adafruit_BMP085_Unified(10085);
 #endif
 
@@ -315,7 +315,7 @@ void setup() {
     Serial.begin(115200); /*serial init */
     delay(300);
 
-#ifdef GY_86
+#ifdef USE_BMP180
     Wire.begin(SDA, SCL);
 #endif
 
@@ -437,7 +437,7 @@ void setup() {
     lv_label_set_text(ui_Version1, "v" Version);
     lv_label_set_text(ui_Version2, "v" Version);
 
-#ifdef GY_86
+#ifdef USE_BMP180
     while (!bmp.begin()) {
         Serial.print(
             "Ooops, no BMP180 detected ... Check your wiring or I2C ADDR!");
@@ -615,8 +615,8 @@ void loop() {
         }
     }
 
-#ifdef GY_86
-    // 5. GY-86 氣壓與海拔高度感測 (每 1000ms)
+#ifdef USE_BMP180
+    // 5. BMP180 氣壓與海拔高度感測 (每 1000ms)
     if (nowMs - lastSensorMs >= 1000) {
         lastSensorMs = nowMs;
         sensors_event_t event;
