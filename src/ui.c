@@ -42,6 +42,8 @@ lv_obj_t * ui_CQTY;
 lv_obj_t * ui_Label18;
 lv_obj_t * ui_RecordCount;
 lv_obj_t * ui_Label10;
+lv_obj_t * ui_Version1;
+lv_obj_t * ui_Version2;
 // CUSTOM VARIABLES
 
 

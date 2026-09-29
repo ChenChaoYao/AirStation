@@ -22,6 +22,17 @@ void ui_Screen2_screen_init(void)
     lv_obj_set_style_text_opa(ui_Banner, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_Banner, &ui_font_chinese_20, LV_PART_MAIN | LV_STATE_DEFAULT);
 
+    ui_Version2 = lv_label_create(ui_Screen2);
+    lv_obj_set_width(ui_Version2, LV_SIZE_CONTENT);
+    lv_obj_set_height(ui_Version2, LV_SIZE_CONTENT);
+    lv_obj_set_x(ui_Version2, -4);
+    lv_obj_set_y(ui_Version2, 4);
+    lv_obj_set_align(ui_Version2, LV_ALIGN_TOP_RIGHT);
+    lv_label_set_text(ui_Version2, "v1.4.2");
+    lv_obj_set_style_text_color(ui_Version2, lv_color_hex(0x64DDF9), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui_Version2, 200, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_Version2, &lv_font_montserrat_12, LV_PART_MAIN | LV_STATE_DEFAULT);
+
     ui_Label12 = lv_label_create(ui_Screen2);
     lv_obj_set_width(ui_Label12, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label12, LV_SIZE_CONTENT);    /// 1

@@ -58,6 +58,8 @@ extern lv_obj_t * ui_CQTY;
 extern lv_obj_t * ui_Label18;
 extern lv_obj_t * ui_RecordCount;
 extern lv_obj_t * ui_Label10;
+extern lv_obj_t * ui_Version1;
+extern lv_obj_t * ui_Version2;
 // CUSTOM VARIABLES
 
 // SCREEN: ui_Screen2

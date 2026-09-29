@@ -288,6 +288,17 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_style_text_opa(ui_Label10, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_Label10, &ui_font_chinese_16, LV_PART_MAIN | LV_STATE_DEFAULT);
 
+    ui_Version1 = lv_label_create(ui_Screen1);
+    lv_obj_set_width(ui_Version1, LV_SIZE_CONTENT);
+    lv_obj_set_height(ui_Version1, LV_SIZE_CONTENT);
+    lv_obj_set_x(ui_Version1, -4);
+    lv_obj_set_y(ui_Version1, 4);
+    lv_obj_set_align(ui_Version1, LV_ALIGN_TOP_RIGHT);
+    lv_label_set_text(ui_Version1, "v1.4.2");
+    lv_obj_set_style_text_color(ui_Version1, lv_color_hex(0x64DDF9), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui_Version1, 200, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_Version1, &lv_font_montserrat_12, LV_PART_MAIN | LV_STATE_DEFAULT);
+
     // 全螢幕透明觸控覆蓋層：保證觸碰螢幕任何點（不論點在字體、數值、條狀圖或背景）都能切換畫面
     lv_obj_t * ui_TouchLayer1 = lv_obj_create(ui_Screen1);
     lv_obj_set_size(ui_TouchLayer1, lv_pct(100), lv_pct(100));

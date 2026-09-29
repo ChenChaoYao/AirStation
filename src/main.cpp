@@ -16,7 +16,7 @@
         加上 BMP180 做氣壓及海拔計算並修正畫面顯示
 */
 #include <Arduino.h>
-#define Version "1.4.0"
+#define Version "1.4.2"
 #define APP_TITLE "電壓及車內空氣狀態監督站"
 
 #include <SPI.h>
@@ -434,6 +434,8 @@ void setup() {
     esp_now_register_recv_cb(OnDataRecv);
     ledlamp(1, 0, 1);
     lv_label_set_text(ui_Wifi, Version);
+    lv_label_set_text(ui_Version1, "v" Version);
+    lv_label_set_text(ui_Version2, "v" Version);
 
 #ifdef GY_86
     while (!bmp.begin()) {
