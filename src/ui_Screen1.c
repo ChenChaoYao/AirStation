@@ -194,7 +194,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_width(ui_Label5, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label5, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_Label5, lv_pct(0));
-    lv_obj_set_y(ui_Label5, lv_pct(-12));
+    lv_obj_set_y(ui_Label5, -13);
     lv_obj_set_align(ui_Label5, LV_ALIGN_TOP_MID);
     lv_label_set_text(ui_Label5, "系統狀態");
     lv_obj_set_style_text_color(ui_Label5, lv_color_hex(0xF96969), LV_PART_MAIN | LV_STATE_DEFAULT);
