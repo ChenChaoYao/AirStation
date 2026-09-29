@@ -81,7 +81,7 @@ void ui_Screen1_screen_init(void)
     ui_Pressure = lv_label_create(ui_Voltage);
     lv_obj_set_width(ui_Pressure, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Pressure, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_y(ui_Pressure, 8);
+    lv_obj_set_y(ui_Pressure, 11);
     lv_obj_set_x(ui_Pressure, lv_pct(-28));
     lv_obj_set_align(ui_Pressure, LV_ALIGN_BOTTOM_MID);
     lv_label_set_text(ui_Pressure, "大氣壓力:");
@@ -157,7 +157,7 @@ void ui_Screen1_screen_init(void)
     ui_Altitude = lv_label_create(ui_Temperature);
     lv_obj_set_width(ui_Altitude, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Altitude, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_y(ui_Altitude, 8);
+    lv_obj_set_y(ui_Altitude, 11);
     lv_obj_set_x(ui_Altitude, lv_pct(-28));
     lv_obj_set_align(ui_Altitude, LV_ALIGN_BOTTOM_MID);
     lv_label_set_text(ui_Altitude, "海拔高度:");
